@@ -1,0 +1,9 @@
+# CMake
+cmake-build-*/
+build/
+
+# Jetbrains
+.idea/
+
+# Protobuf generated
+*.pb.*

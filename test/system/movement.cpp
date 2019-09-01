@@ -2,10 +2,10 @@
 
 #include "server/registry.h"
 
-#include "server/component/position.h"
-#include "server/component/velocity.h"
+#include "component/position.h"
+#include "component/velocity.h"
 
-#include "server/system/movement.h"
+#include "system/movement.h"
 
 TEST_CASE("Movement Test", "[Movement]") {
     using dankland::registry;
@@ -16,7 +16,7 @@ TEST_CASE("Movement Test", "[Movement]") {
     auto& pos = registry.assign<Position>(entity, 1, 2);
     registry.assign<Velocity>(entity, -5, 5);
 
-    dankland::system::update_positions(1);
+    dankland::system::MovementSystem::tick();
 
     REQUIRE(pos.x == -4);
     REQUIRE(pos.y == 7);

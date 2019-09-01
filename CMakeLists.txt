@@ -8,9 +8,16 @@ find_package(Catch2 CONFIG REQUIRED)
 find_package(spdlog CONFIG REQUIRED)
 find_package(EnTT CONFIG REQUIRED)
 find_package(gRPC CONFIG REQUIRED)
+find_package(glm CONFIG REQUIRED)
+find_package(glfw3 CONFIG REQUIRED)
+find_package(GLEW REQUIRED)
+find_package(OpenGL REQUIRED)
 
 # Base directory relative includes
 include_directories(.)
+
+# Non-vcpkg third party includes
+include_directories(third_party)
 
 # Flags
 set(CMAKE_CXX_STANDARD 17)
@@ -42,6 +49,26 @@ add_executable(
         test/system/movement.cpp
 )
 
+add_executable(
+        client
+        client/Main.cpp
+        client/application.cpp
+        client/opengl/context.cpp
+        client/opengl/renderer.cpp
+        client/opengl/texture.cpp
+        client/opengl/vertex_array.cpp
+        client/opengl/program.cpp
+        client/opengl/shader.cpp
+        client/opengl/callbacks.cpp
+        client/opengl/window.cpp
+)
+
 # Linked libs
-target_link_libraries(server PRIVATE Catch2::Catch2 spdlog::spdlog EnTT gRPC::gpr gRPC::grpc gRPC::grpc++)
-target_link_libraries(server_test PRIVATE Catch2::Catch2 spdlog::spdlog EnTT gRPC::gpr gRPC::grpc gRPC::grpc++)
+target_link_libraries(server PRIVATE spdlog::spdlog EnTT gRPC::gpr gRPC::grpc gRPC::grpc++)
+target_link_libraries(server_test PRIVATE Catch2::Catch2 EnTT)
+
+target_link_libraries(client PRIVATE spdlog::spdlog glm glfw GLEW::GLEW OpenGL::OpenGL)
+target_link_libraries(client PRIVATE ${OPENGL_LIBRARIES})
+
+# Logfiles
+file(MAKE_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/logs")

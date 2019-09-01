@@ -1,7 +1,7 @@
 #!/bin/bash
 
-echo "Installing build-essential, git and cmake..."
-sudo apt-get install build-essential git cmake
+echo "Installing system dependencies..."
+sudo apt-get install build-essential git cmake libxi-dev
 
 echo "Initializing and updating submodules..."
 git submodule update --init
@@ -13,8 +13,8 @@ else
   echo "Found vcpkg executable!"
 fi
 
-echo "Installing catch2, entt, sdlog and grpc..."
-./third_party/vcpkg/vcpkg install catch2 entt spdlog grpc
+echo "Installing library dependencies..."
+./third_party/vcpkg/vcpkg install catch2 entt spdlog grpc opengl glew glm glfw3
 
 echo "Compiling proto files..."
 ./third_party/vcpkg/packages/protobuf_x64-linux/tools/protobuf/protoc \

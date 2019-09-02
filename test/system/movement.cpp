@@ -1,6 +1,6 @@
 #include "catch2/catch.hpp"
 
-#include "server/registry.h"
+#include "registry.h"
 
 #include "component/position.h"
 #include "component/velocity.h"

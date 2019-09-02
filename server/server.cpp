@@ -1,7 +1,7 @@
 #include <grpcpp/grpcpp.h>
 #include <spdlog/spdlog.h>
 
-#include "service_impl/networking.h"
+#include "service/networking.h"
 
 using grpc::Server;
 using grpc::ServerBuilder;

@@ -1,7 +1,7 @@
 #ifndef DANKLAND_SYSTEM_MOVEMENT_H
 #define DANKLAND_SYSTEM_MOVEMENT_H
 
-#include "server/registry.h"
+#include "registry.h"
 
 #include "component/position.h"
 #include "component/velocity.h"

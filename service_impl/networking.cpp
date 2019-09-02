@@ -1,7 +1,6 @@
 #include <grpcpp/grpcpp.h>
 
-#include "networking.h"
-#include "service/networking.grpc.pb.h"
+#include "service/networking.h"
 
 using grpc::ServerContext;
 using grpc::Status;

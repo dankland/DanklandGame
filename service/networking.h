@@ -1,5 +1,5 @@
-#ifndef DANKLAND_SERVICE_IMPL_NETWORKING_H
-#define DANKLAND_SERVICE_IMPL_NETWORKING_H
+#ifndef DANKLAND_SERVICE_NETWORKING_H
+#define DANKLAND_SERVICE_NETWORKING_H
 
 #include "service/networking.grpc.pb.h"
 
@@ -13,4 +13,4 @@ class NetworkingServiceFactory {
 
 }  // namespace networking
 
-#endif  // DANKLAND_SERVICE_IMPL_NETWORKING_H
+#endif  // DANKLAND_SERVICE_NETWORKING_H

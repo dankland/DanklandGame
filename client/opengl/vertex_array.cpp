@@ -1,7 +1,9 @@
 #include "vertex_array.hpp"
 
-OpenGLVertexArray::OpenGLVertexArray(const std::vector<int>& sizes)
-    : indices_total_{0}, indices_per_{0} {
+OpenGLVertexArray::OpenGLVertexArray() : indices_total_{0}, indices_per_{0} {
+}
+
+void OpenGLVertexArray::create(const std::vector<int>& sizes) {
     glGenVertexArrays(1, &vao_);
     glBindVertexArray(vao_);
 

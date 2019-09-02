@@ -7,9 +7,11 @@
 
 class OpenGLVertexArray {
    public:
-    explicit OpenGLVertexArray(const std::vector<int>& sizes);
+    OpenGLVertexArray();
 
     ~OpenGLVertexArray();
+
+    void create(const std::vector<int>& sizes);
 
     void bind() const noexcept;
 

@@ -3,23 +3,6 @@
 #include "shader.hpp"
 
 Program::Program() : linked_{false} {
-    id_ = glCreateProgram();
-}
-
-Program::Program(const Shader& vshader, const Shader& fshader) : linked_{false} {
-    spdlog::debug("Program constructor");
-    id_ = glCreateProgram();
-
-    attach(vshader);
-    attach(fshader);
-    link();
-    detach(fshader);
-    detach(vshader);
-
-    if (!valid()) {
-        spdlog::critical("Program link error");
-        throw "Program link error";
-    }
 }
 
 Program::~Program() {
@@ -27,8 +10,20 @@ Program::~Program() {
     glDeleteProgram(id_);
 }
 
-void Program::link() noexcept {
+void Program::compile(const Shader& vshader, const Shader& fshader) {
+    id_ = glCreateProgram();
+
+    attach(vshader);
+    attach(fshader);
     glLinkProgram(id_);
+    detach(fshader);
+    detach(vshader);
+
+    if (!valid()) {
+        spdlog::critical("Program link error");
+        throw "Program link error";
+    }
+
     linked_ = true;
 }
 

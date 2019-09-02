@@ -12,17 +12,11 @@ class Program {
    public:
     Program();
 
-    Program(const Shader& vshader, const Shader& fshader);
-
     ~Program();
 
-    void link() noexcept;
+    void compile(const Shader& vshader, const Shader& fshader);
 
     [[nodiscard]] bool valid() const noexcept;
-
-    void attach(const Shader& shader) const noexcept;
-
-    void detach(const Shader& shader) const noexcept;
 
     void use() const noexcept;
 
@@ -50,6 +44,11 @@ class Program {
                         const int i2,
                         const int i3,
                         const int i4) noexcept;
+
+   private:
+    void attach(const Shader& shader) const noexcept;
+
+    void detach(const Shader& shader) const noexcept;
 
    private:
     GLuint id_;
